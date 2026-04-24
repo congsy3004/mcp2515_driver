@@ -14,6 +14,7 @@
 #include "mcp2515.h"
 #include <stdbool.h>
 #include <stdint.h>
+#include <stddef.h>
 /* -------------------------------------------------------------------------
  *                           << Private Types >>                                   
  * -------------------------------------------------------------------------*/
@@ -65,5 +66,14 @@ bool mcp2515_isInited(pst_mcp2515_t pst_mcp2515)
 {
 	return pst_mcp2515->isInited;
 }
-
+bool mcp2515_SendCommand(pst_mcp2515_t pst_mcp2515, uint8_t* p_cmd)
+{
+	bool sent_result = false;
+	if(!pst_mcp2515->isInited){
+		return false;
+	}
+	sent_result = pst_mcp2515->st_mcp2515_spi.send_byte(p_cmd);
+	if(!sent_result) return false;
+	return true;
+}
 /******************************** END OF FILE ********************************/

@@ -33,3 +33,14 @@ void test_shouldBeInited_afterInited()
 	is_inited = mcp2515_isInited(tst_pst_mcp2515);
 	TEST_ASSERT_TRUE(is_inited == true);
 }
+
+void test_shouldReturnTrue_afterSpiSendByteReturnTrue()
+{
+	bool retVal = false;
+	uint8_t expect_cmd = 0xFF;
+	uint8_t sent_cmd = 0xFF;
+	spi_send_byte_ExpectAndReturn(&expect_cmd, true);;
+	retVal = mcp2515_SendCommand(pst_mcp2515, &sent_cmd);
+	TEST_ASSERT_TRUE(retVal == true);
+
+}
