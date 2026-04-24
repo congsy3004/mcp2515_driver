@@ -71,6 +71,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SPI2_CS_Pin LL_GPIO_PIN_1
+#define SPI2_CS_GPIO_Port GPIOC
+#define SPI3_CS_Pin LL_GPIO_PIN_10
+#define SPI3_CS_GPIO_Port GPIOC
 #ifndef NVIC_PRIORITYGROUP_0
 #define NVIC_PRIORITYGROUP_0         ((uint32_t)0x00000007) /*!< 0 bit  for pre-emption priority,
                                                                  4 bits for subpriority */
